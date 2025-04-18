@@ -1,10 +1,5 @@
-from typing import Optional, Self
-
-
-class ListNode:
-    def __init__(self, val: int = 0, next: Optional[Self] = None):
-        self.val = val
-        self.next = next
+from typing import Optional
+from utils import flatten_list, make_list, ListNode
 
 
 class Solution:
@@ -21,15 +16,4 @@ class Solution:
         return prev
 
 
-def make_list(values: list[int]) -> ListNode | None:
-    dummy = ListNode(-1)
-    curr = dummy
-
-    for v in values:
-        curr.next = ListNode(v)
-        curr = curr.next
-
-    return dummy.next
-
-
-print(Solution().reverseList(make_list([0, 1, 2, 3])))
+assert flatten_list(Solution().reverseList(make_list([0, 1, 2, 3]))) == [3, 2, 1, 0]
